@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package aptos.stats.v1;
+
+message TransactionStatistic {
+  uint64 count = 1;
+}

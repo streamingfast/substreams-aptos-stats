@@ -1,0 +1,27 @@
+specVersion: v0.1.0
+package:
+  name: "substreams_apots_stats"
+  version: v0.1.0
+
+imports:
+  aptos: /Users/maoueh/work/sf/firehose-aptos/aptos-v0.0.1.spkg
+
+protobuf:
+  files:
+    - stats.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/substreams_aptos_stats.wasm
+
+modules:
+  - name: store_count
+    kind: store
+    initialBlock: 0
+    updatePolicy: add
+    valueType: int64
+    inputs:
+      - source: sf.aptos.type.v1.Transaction

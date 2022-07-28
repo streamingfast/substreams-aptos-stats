@@ -1,0 +1,19 @@
+[package]
+name = "substreams-aptos-stats"
+version = "0.1.0"
+description = "Substream for gathering Aptos statistics"
+edition = "2021"
+repository = "https://github.com/streamingfast/substreams-aptos-stats"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+prost = "0.10.1"
+prost-types = "0.10.1"
+substreams = "0.0.12"
+
+[profile.release]
+lto = true
+opt-level = 's'
+strip = "debuginfo"
