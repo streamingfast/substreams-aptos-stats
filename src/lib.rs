@@ -1,6 +1,27 @@
 mod pb;
-use pb::aptos;
+use pb::{
+    aptos::{self, BlockMetadataTransaction},
+    stats::BlockMetadataWrapper,
+};
 use substreams::store;
+
+use crate::pb::{aptos::transaction::TxnData, stats::BlockMetadata};
+
+#[substreams::handlers::map]
+fn block_metadata(
+    transaction: aptos::Transaction,
+) -> Result<BlockMetadataWrapper, substreams::errors::Error> {
+    Ok(match transaction.txn_data {
+        Some(TxnData::BlockMetadata(data)) => BlockMetadataWrapper {
+            metadata: Some(BlockMetadata {
+                id: data.id,
+                round: data.round,
+                timestamp: transaction.timestamp,
+            }),
+        },
+        _ => BlockMetadataWrapper { metadata: None },
+    })
+}
 
 #[substreams::handlers::store]
 fn store_count(transaction: aptos::Transaction, store: store::StoreAddInt64) {

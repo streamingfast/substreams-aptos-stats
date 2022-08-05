@@ -2,6 +2,18 @@ syntax = "proto3";
 
 package aptos.stats.v1;
 
+import "google/protobuf/timestamp.proto";
+
 message TransactionStatistic {
   uint64 count = 1;
+}
+
+message BlockMetadataWrapper {
+  BlockMetadata metadata = 1;
+}
+
+message BlockMetadata {
+  string id = 1;
+  uint64 round = 2;
+  google.protobuf.Timestamp timestamp = 3;
 }

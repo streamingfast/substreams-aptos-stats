@@ -25,3 +25,12 @@ modules:
     valueType: int64
     inputs:
       - source: sf.aptos.type.v1.Transaction
+
+  - name: block_metadata
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.aptos.type.v1.Transaction
+    output:
+      type: aptos.stats.v1.BlockMetadataWrapper
+
