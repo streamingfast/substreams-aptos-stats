@@ -4,7 +4,7 @@ package:
   version: v0.1.0
 
 imports:
-  aptos: /Users/maoueh/work/sf/firehose-aptos/aptos-v0.0.1.spkg
+  aptos: https://github.com/streamingfast/firehose-aptos/releases/download/v0.0.1/aptos-v0.0.1.spkg
 
 protobuf:
   files:
