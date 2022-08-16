@@ -4,7 +4,7 @@ package:
   version: v0.1.0
 
 imports:
-  aptos: https://github.com/streamingfast/firehose-aptos/releases/download/v0.0.1/aptos-v0.0.1.spkg
+  aptos: https://github.com/streamingfast/firehose-aptos/releases/download/v0.1.0/aptos-v0.1.0.spkg
 
 protobuf:
   files:
@@ -24,4 +24,4 @@ modules:
     updatePolicy: add
     valueType: int64
     inputs:
-      - source: sf.aptos.type.v1.Transaction
+      - source: aptos.extractor.v1.Block

@@ -8,4 +8,4 @@ stream:
 
 .PHONY: codegen
 codegen:
-	substreams protogen ./substreams.yaml --exclude-paths="sf/aptos,sf/substreams,google"
+	substreams protogen ./substreams.yaml --exclude-paths="sf/substreams,google"

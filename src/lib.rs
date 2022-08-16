@@ -1,22 +1,29 @@
 mod pb;
-use pb::aptos;
+use pb::aptos::extractor::v1 as aptos;
 use substreams::store;
 
 #[substreams::handlers::store]
-fn store_count(transaction: aptos::Transaction, store: store::StoreAddInt64) {
-    store.add(transaction.version, generate_trx_key(), 1);
+fn store_count(block: aptos::Block, store: store::StoreAddInt64) {
     store.add(
-        transaction.version,
-        generate_trx_type_key(transaction.r#type()),
-        1,
+        block.height,
+        generate_total_trx_key(),
+        block.transactions.len() as i64,
     );
+
+    block.transactions.iter().for_each(|transaction| {
+        store.add(
+            transaction.version,
+            generate_total_trx_type_key(transaction.r#type()),
+            1,
+        );
+    });
 }
 
-fn generate_trx_key() -> String {
+fn generate_total_trx_key() -> String {
     return format!("total");
 }
 
-fn generate_trx_type_key(trx_type: aptos::transaction::TransactionType) -> String {
+fn generate_total_trx_type_key(trx_type: aptos::transaction::TransactionType) -> String {
     use aptos::transaction::TransactionType;
 
     match trx_type {
