@@ -9,9 +9,9 @@ repository = "https://github.com/streamingfast/substreams-aptos-stats"
 crate-type = ["cdylib"]
 
 [dependencies]
-prost = "0.10.1"
-prost-types = "0.10.1"
-substreams = "0.0.12"
+prost = { version = "0.11.0" }
+prost-types = "0.11.0"
+substreams = { version = "0.0.20" }
 
 [profile.release]
 lto = true
