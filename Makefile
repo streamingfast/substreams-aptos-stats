@@ -4,7 +4,7 @@ build:
 
 .PHONY: stream
 stream:
-	substreams run -p -e localhost:18015 substreams.yaml store_count --stop-block +100
+	substreams run -e testnet.aptos.streamingfast.io:443 substreams.yaml store_count --stop-block +100
 
 .PHONY: codegen
 codegen:
