@@ -5,7 +5,7 @@
 
 Use this quickstart guide to set up your environment to use Substreams locally.
 
-First, [copy this repository](https://github.com/streamingfast/substreams-template/generate) and clone it.
+First, [copy this repository](https://github.com/streamingfast/substreams-aptos-stats/generate) and clone it.
 
 ## Install Dependencies
 
